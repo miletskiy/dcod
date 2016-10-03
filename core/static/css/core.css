@@ -33,3 +33,8 @@ body {
 .container .text-muted {
     margin: 20px 0;
 }
+
+#chart {
+    height: 440px;
+    /*width: 100%;*/
+}

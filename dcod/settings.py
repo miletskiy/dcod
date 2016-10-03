@@ -25,7 +25,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = "sekd=(b3v$-bm0jbmii@+j=-=^psudy(s3(^$reika+1fu_uz="
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # Application definition
 
@@ -86,6 +86,11 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+import sys
+if 'test' in sys.argv:
+    DEBUG = False
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {

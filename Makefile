@@ -5,11 +5,11 @@ SHELL=/bin/bash
 # constants
 PROJECT_NAME=DCOD
 BIND_TO=0.0.0.0
-BIND_PORT=8022
+BIND_PORT=8023
 MANAGE=python manage.py
 DJANGO_SETTINGS_MODULE=dcod.settings
 
-TEST_APP=apps
+TEST_APP=core
 TEST_OPTIONS=-v2 --keepdb
 
 include

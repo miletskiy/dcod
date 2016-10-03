@@ -1,2 +1,22 @@
 
 {% extends 'base.html' %}
+
+{% block page_title %}Data from file{% endblock page_title %}
+
+
+{% block content %}
+    <div class="row">
+      <div class="col-md-3">
+        <select class="form-control">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+      </div>
+      <div class="col-md-12">
+        <section class="chart" id="chart"></section>
+      </div>
+    </div>
+
+{% endblock content %}
