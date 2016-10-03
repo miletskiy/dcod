@@ -69,7 +69,7 @@ push:
 	git push heroku master
 
 github:
-	git push github master
+	git push
 
 
 
