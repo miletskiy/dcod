@@ -14,7 +14,7 @@ TEST_OPTIONS=-v2 --keepdb
 
 include
 
-.PHONY: run open local clean manage help test flake8 shell ishell hshell push gitlab
+.PHONY: run open local clean manage help test flake8 shell ishell hshell push github
 
 run:
 	@echo Starting $(PROJECT_NAME) with $(DJANGO_SETTINGS_MODULE)...
@@ -30,7 +30,7 @@ local:
 
 web:
 	@echo Opening web version $(PROJECT_NAME) ...
-	open 'https://dcod.herokuapp.com/'
+	heroku open
 
 clean:
 	@echo Cleaning up...
@@ -54,21 +54,6 @@ flake8:
 	@echo http://flake8.pycqa.org/en/latest/config.html
 	flake8 --max-complexity 10 $(TEST_APP)
 
-pylint:
-	@echo Please, specify this command in the Makefile
-	@echo Please, configure this command
-	pylint apps
-
-coverage:
-	@echo Starting coverage with bash report for $(PROJECT_NAME) ...
-	coverage run --source='.' --rcfile=coverage.cfg manage.py test
-	coverage report
-
-html:
-	@echo Generating coverage html repot for $(PROJECT_NAME) ...
-	coverage html --rcfile=coverage.cfg
-	@echo Done
-
 shell:
 	# @echo Please, specify this command in the Makefile
 	$(MANAGE) shell --plain
@@ -82,9 +67,6 @@ ishell:
 
 push:
 	git push heroku master
-
-gitlab:
-	git push gitlab master
 
 github:
 	git push github master

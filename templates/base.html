@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}{{ project_name }}DCOD Test Assignment{% endblock title %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="{%  block meta_desription %}{% endblock %}">
+  <meta name="keywords" content="{%  block meta_keywords %}DCOD Test Assignment{% endblock %}">
+  <meta name="author" content="{%  block author %}Sergey Miletskiy{% endblock %}">
+  <meta name="generator" content="Django engine">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <meta name="rating" content="General">
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <!-- Le styles -->
+  <!-- This file store project specific CSS -->
+  <link rel="stylesheet" href=" {% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href=" {% static 'css/core.css' %}">
+  {% block extra_css %}
+  <style type="text/css"></style>
+  {% endblock extra_css %}
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+  <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>{% block page_title %}Hello World!{% endblock page_title %}</h1>
+      </div>
+    </div>
+    <hr>
+    {% block content %}
+    <p class="lead" id="test">Use this document as a way to quick start any new project.</p>
+    {% endblock content %}
+  </div>
+  <!-- /container -->
+
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted">© 2016 DCOD Test Assignment</p>
+    </div>
+  </footer>
+
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+  <!-- Tether for Bootstrap -->
+  <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
+
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/core.js' %}"></script>
+</body>
+
+</html>
