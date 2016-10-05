@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.core.management import call_command
 from django.core.management.base import CommandError
 from core.models import CitiesData
+from core.forms import CitiesDataForm
 
 
 class CorePageTest(TestCase):
@@ -20,6 +21,7 @@ class CorePageTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'core.html')
+        self.assertIsInstance(response.context['form'], CitiesDataForm)
 
 
 class CommandParseFileTest(TestCase):
