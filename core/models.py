@@ -18,7 +18,7 @@ class CitiesData(models.Model):
         verbose_name=u'Region of the city')
 
     data = models.IntegerField(
-        verbose_name=u'Region of the city'
+        verbose_name=u'Data for the city'
     )
 
     def __unicode__(self):

@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255, verbose_name='Name of the city')),
                 ('region', models.CharField(max_length=255, verbose_name='Region of the city')),
-                ('data', models.IntegerField(verbose_name='Region of the city')),
+                ('data', models.IntegerField(verbose_name='Data for the city')),
             ],
             options={
                 'verbose_name': 'CitiesData',
