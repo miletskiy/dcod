@@ -35,7 +35,7 @@ body {
 }
 
 #chart {
-    height: calc(100vh - 245px);
+    height: calc(100vh - 210px);
 }
 .fieldWrapper {
     width: 170px;
