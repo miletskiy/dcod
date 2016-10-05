@@ -2,8 +2,7 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.core.management import call_command
-from django.utils.six import StringIO
-import os
+from django.core.management.base import CommandError
 from core.models import CitiesData
 
 
@@ -34,8 +33,7 @@ class CommandParseFileTest(TestCase):
         """
         self.assertEqual(CitiesData.objects.count(), 0)
 
-        correct_file = 'data.csv'
-
+        correct_file = '2CuNPefD.csv'
         call_command('parsefile', correct_file)
 
         self.assertNotEqual(CitiesData.objects.count(), 0)
@@ -45,13 +43,12 @@ class CommandParseFileTest(TestCase):
         """
         Run command with invalid filename and get the error message
         """
-
         wrong_file = 'data.txt'
 
-        STDOUT = StringIO()
-        call_command('parsefile', wrong_file)
-        result_out = STDOUT.getvalue()
         error_message = 'Please specify only files in CSV format'
 
-        self.assertEqual(CitiesData.objects.all(), 0)
-        self.assertIn(error_message, result_out)
+        self.assertEqual(CitiesData.objects.count(), 0)
+
+        with self.assertRaises(CommandError) as ce:
+            call_command('parsefile', wrong_file)
+            self.assertEqual(error_message, ce.exception.message)

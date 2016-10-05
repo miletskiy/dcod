@@ -35,8 +35,7 @@ web:
 clean:
 	@echo Cleaning up...
 	find ./dcod | grep '\.pyc$$' | xargs -I {} rm {}
-	find ./apps/core | grep '\.pyc$$' | xargs -I {} rm {}
-	# find ./dcod | grep '\.pyc$$' | xargs -p -I {} rm {}
+	find ./core | grep '\.pyc$$' | xargs -I {} rm {}
 	@echo Done
 
 manage:

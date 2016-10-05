@@ -22,4 +22,4 @@ class CitiesData(models.Model):
     )
 
     def __unicode__(self):
-        return u'{} {}'.format(self.name, self.region)
+        return u'{1} {0}'.format(self.name, self.region)
