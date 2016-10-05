@@ -1,15 +1,21 @@
 
-$('#test').click(function() {
-    alert('Hello, World!');
-})
+$('select').on('change', function() {
+    console.log();
+    if (this.value) {
+        $('#submit_button').prop('disabled', false);
+    }else{
+        $('#submit_button').prop('disabled', true);
+    };
+});
 
-var rawData = {"data": [{"\u041e\u0431\u043b\u0430\u0441\u0442\u044c": "\u0418\u0432\u0430\u043d\u043e-\u0424\u0440\u0430\u043d\u043a\u043e\u0432\u0441\u043a\u0430\u044f", "\u0413\u043e\u0440\u043e\u0434": "\u041a\u043e\u043b\u044c\u0441\u043a\u0438\u0439 \u0440-\u043d", "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435": "288.00"}, {"\u041e\u0431\u043b\u0430\u0441\u0442\u044c": "\u0418\u0432\u0430\u043d\u043e-\u0424\u0440\u0430\u043d\u043a\u043e\u0432\u0441\u043a\u0430\u044f", "\u0413\u043e\u0440\u043e\u0434": "\u0413\u0430\u043b\u0438\u0446\u043a\u0438\u0439 \u0440\u0430\u0439\u043e\u043d", "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435": "376.00"}, {"\u041e\u0431\u043b\u0430\u0441\u0442\u044c": "\u0418\u0432\u0430\u043d\u043e-\u0424\u0440\u0430\u043d\u043a\u043e\u0432\u0441\u043a\u0430\u044f", "\u0413\u043e\u0440\u043e\u0434": "\u0418\u0432\u0430\u043d\u043e-\u0424\u0440\u0430\u043d\u043a\u043e\u0432\u0441\u043a", "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435": "409.00"}, {"\u041e\u0431\u043b\u0430\u0441\u0442\u044c": "\u0418\u0432\u0430\u043d\u043e-\u0424\u0440\u0430\u043d\u043a\u043e\u0432\u0441\u043a\u0430\u044f", "\u0413\u043e\u0440\u043e\u0434": "\u0422\u0438\u0441\u043c\u0435\u043d\u0438\u0446\u043a\u0438\u0439 \u0440-\u043d", "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435": "424.00"}, {"\u041e\u0431\u043b\u0430\u0441\u0442\u044c": "\u0418\u0432\u0430\u043d\u043e-\u0424\u0440\u0430\u043d\u043a\u043e\u0432\u0441\u043a\u0430\u044f", "\u0413\u043e\u0440\u043e\u0434": "\u0411\u043e\u0433\u043e\u0440\u043e\u0434\u0447\u0430\u043d\u0441\u043a\u0438\u0439 \u0440-\u043d", "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435": "463.00"}, {"\u041e\u0431\u043b\u0430\u0441\u0442\u044c": "\u0418\u0432\u0430\u043d\u043e-\u0424\u0440\u0430\u043d\u043a\u043e\u0432\u0441\u043a\u0430\u044f", "\u0413\u043e\u0440\u043e\u0434": "\u0420\u043e\u0433\u0430\u0442\u0438\u043d\u0441\u043a\u0438\u0439 \u0440-\u043d", "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435": "517.00"}] };
 var cities = [];
 
-rawData.data.forEach(function(element, index, array) {
-    var obj = {name:element.Город, data:[parseInt(element.Значение)]};
-    cities.push(obj);
-});
+if (!$.isEmptyObject(data)) {
+    data.forEach(function(element, index, array) {
+        var obj = {name:data[index].fields.name, data:[parseInt(data[index].fields.data)]};
+        cities.push(obj);
+    });
+};
 
 
 var chartOpt = {
@@ -18,14 +24,13 @@ var chartOpt = {
             type: 'column'
         },
         title: {
-            text: 'Данные по городам'
+            text: 'Данные по районам'
         },
         subtitle: {
-            text: 'Source: json data'
+            text: 'Источник: CSV файл'
         },
         xAxis: {
-            categories: ['Ивано-Франковская'],
-
+            categories: [region],
         },
         yAxis: {
             min: 0,

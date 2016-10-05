@@ -35,6 +35,8 @@ body {
 }
 
 #chart {
-    height: 440px;
-    /*width: 100%;*/
+    height: calc(100vh - 245px);
+}
+.fieldWrapper {
+    width: 170px;
 }
