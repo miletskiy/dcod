@@ -3,9 +3,18 @@ $('#test').click(function() {
     alert('Hello, World!');
 })
 
-$(function () {
-    var myChart = Highcharts.chart('chart', {
+var rawData = {"data": [{"\u041e\u0431\u043b\u0430\u0441\u0442\u044c": "\u0418\u0432\u0430\u043d\u043e-\u0424\u0440\u0430\u043d\u043a\u043e\u0432\u0441\u043a\u0430\u044f", "\u0413\u043e\u0440\u043e\u0434": "\u041a\u043e\u043b\u044c\u0441\u043a\u0438\u0439 \u0440-\u043d", "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435": "288.00"}, {"\u041e\u0431\u043b\u0430\u0441\u0442\u044c": "\u0418\u0432\u0430\u043d\u043e-\u0424\u0440\u0430\u043d\u043a\u043e\u0432\u0441\u043a\u0430\u044f", "\u0413\u043e\u0440\u043e\u0434": "\u0413\u0430\u043b\u0438\u0446\u043a\u0438\u0439 \u0440\u0430\u0439\u043e\u043d", "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435": "376.00"}, {"\u041e\u0431\u043b\u0430\u0441\u0442\u044c": "\u0418\u0432\u0430\u043d\u043e-\u0424\u0440\u0430\u043d\u043a\u043e\u0432\u0441\u043a\u0430\u044f", "\u0413\u043e\u0440\u043e\u0434": "\u0418\u0432\u0430\u043d\u043e-\u0424\u0440\u0430\u043d\u043a\u043e\u0432\u0441\u043a", "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435": "409.00"}, {"\u041e\u0431\u043b\u0430\u0441\u0442\u044c": "\u0418\u0432\u0430\u043d\u043e-\u0424\u0440\u0430\u043d\u043a\u043e\u0432\u0441\u043a\u0430\u044f", "\u0413\u043e\u0440\u043e\u0434": "\u0422\u0438\u0441\u043c\u0435\u043d\u0438\u0446\u043a\u0438\u0439 \u0440-\u043d", "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435": "424.00"}, {"\u041e\u0431\u043b\u0430\u0441\u0442\u044c": "\u0418\u0432\u0430\u043d\u043e-\u0424\u0440\u0430\u043d\u043a\u043e\u0432\u0441\u043a\u0430\u044f", "\u0413\u043e\u0440\u043e\u0434": "\u0411\u043e\u0433\u043e\u0440\u043e\u0434\u0447\u0430\u043d\u0441\u043a\u0438\u0439 \u0440-\u043d", "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435": "463.00"}, {"\u041e\u0431\u043b\u0430\u0441\u0442\u044c": "\u0418\u0432\u0430\u043d\u043e-\u0424\u0440\u0430\u043d\u043a\u043e\u0432\u0441\u043a\u0430\u044f", "\u0413\u043e\u0440\u043e\u0434": "\u0420\u043e\u0433\u0430\u0442\u0438\u043d\u0441\u043a\u0438\u0439 \u0440-\u043d", "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435": "517.00"}] };
+var cities = [];
+
+rawData.data.forEach(function(element, index, array) {
+    var obj = {name:element.Город, data:[parseInt(element.Значение)]};
+    cities.push(obj);
+});
+
+
+var chartOpt = {
         chart: {
+            renderTo: 'chart',
             type: 'column'
         },
         title: {
@@ -26,103 +35,14 @@ $(function () {
         },
         legend: {
             enabled: true
-        },
-        series: [{
-            name: 'Богородчанский р-н',
-            data: [463]
-        }, {
-            name: 'Тисменицкий р-н',
-            data: [517]
-        }, {
-            name: 'Рогатинский р-н',
-            data: [424]
-        }, {
-            name: 'Снятинский р-н',
-            data: [710]
-        }, {
-            name: 'Надвирнянский р-н',
-            data: [830]
-        }, {
-            name: 'Тисменицкий р-н',
-            data: [517]
-        }, {
-            name: 'Рогатинский р-н',
-            data: [424]
-        }, {
-            name: 'Снятинский р-н',
-            data: [710]
-        }, {
-            name: 'Надвирнянский р-н',
-            data: [830]
         }
-        ]
-    });
+
+    };
+
+chartOpt.series=cities;
+
+
+$(function () {
+    var myChart = Highcharts.chart(chartOpt);
+    console.log(myChart);
 });
-
-// $(function () {
-//     $('#chart').highcharts({
-//         chart: {
-//             type: 'column'
-//         },
-//         title: {
-//             text: 'Monthly Average Rainfall'
-//         },
-//         subtitle: {
-//             text: 'Source: WorldClimate.com'
-//         },
-//         xAxis: {
-//             categories: [
-//                 'Jan',
-//                 'Feb',
-//                 'Mar',
-//                 'Apr',
-//                 'May',
-//                 'Jun',
-//                 'Jul',
-//                 'Aug',
-//                 'Sep',
-//                 'Oct',
-//                 'Nov',
-//                 'Dec'
-//             ],
-//             crosshair: true
-//         },
-//         yAxis: {
-//             min: 0,
-//             title: {
-//                 text: 'Rainfall (mm)'
-//             }
-//         },
-//         tooltip: {
-//             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-//             pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-//                 '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-//             footerFormat: '</table>',
-//             shared: true,
-//             useHTML: true
-//         },
-//         plotOptions: {
-//             column: {
-//                 pointPadding: 0.2,
-//                 borderWidth: 0
-//             }
-//         },
-//         series: [{
-//             name: 'Tokyo',
-//             data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-//         }, {
-//             name: 'New York',
-//             data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-//         }, {
-//             name: 'London',
-//             data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-//         }, {
-//             name: 'Berlin',
-//             data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-
-//         }]
-//     });
-// });
