@@ -1,2 +1,34 @@
 
 {% extends 'base.html' %}
+
+{% block page_title %}График{% endblock page_title %}
+
+
+{% block content %}
+    <div class="row">
+      <div class="col-md-4">
+        <form action="." method="GET">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="input-group">
+
+            <div class="fieldWrapper" title="Выберите область">
+              {{ form.regions.errors }}
+              {{ form.regions }}
+            </div>
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-default" id="submit_button" disabled="true">Построить график</button>
+            </span>
+            </div>
+        </form>
+      </div>
+      <script type="text/javascript">
+        var data = JSON.parse('{{ data | escapejs }}');
+        var region = '{{ region }}';
+      </script>
+      <div class="col-md-12">
+        <section class="chart" id="chart"></section>
+      </div>
+    </div>
+
+{% endblock content %}
