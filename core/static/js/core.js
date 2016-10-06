@@ -49,5 +49,4 @@ chartOpt.series=cities;
 
 $(function () {
     var myChart = Highcharts.chart(chartOpt);
-    console.log(myChart);
 });
