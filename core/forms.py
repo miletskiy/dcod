@@ -10,7 +10,7 @@ class CitiesDataForm(ModelForm):
         model = CitiesData
         fields = []
 
-    qs = CitiesData.objects.values_list('region', flat=True).distinct()
+    qs = CitiesData.objects.values_list('region', flat=True).distinct().order_by('region')
     regions = ModelChoiceField(queryset=qs,
                                to_field_name="region",
                                empty_label=u"Выберите область")
